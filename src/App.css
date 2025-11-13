@@ -1,38 +1,248 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fffdf9;
+  color: #333;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  color:  #D4AF37;
+  letter-spacing: 1px;
+}
+
+a {
+  text-decoration: none;
+  color: #b8860b;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #d4af37;
+}
+
+/* Container */
+.container {
   text-align: center;
+  padding: 3rem 1rem;
+  max-width: 900px;
+  margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Slideshow */
+.slideshow-container {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  height: 500px; /* landscape ratio */
+  margin: 3rem auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  background-color: #fffaf0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.slide-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures landscape images scale beautifully */
+  border-radius: 15px;
+}
+
+/* Countdown */
+.hero-slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* fullscreen */
+  overflow: hidden;
+}
+
+/* Countdown on top of slideshow */
+.countdown-overlay {
+  position: absolute;
+  top: 50%; /* vertical center */
+  left: 50%; /* horizontal center */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff; /* white */
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem; /* big countdown font */
+  padding-bottom: 30%;
+}
+/* QR code */
+.qr-container {
+  margin-top: 1.5rem;
+}
+
+/* Fade animation */
+.fade-in {
+  animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .countdown {
+    font-size: 1.1rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.fullscreen-slideshow {
+  position: relative;
+  width: 100vw;
+  height: 100vh; /* full screen height */
+  overflow: hidden;
+}
+
+.fullscreen-image {
+   width: 100%;
+  height: 100vh; /* fullscreen */
+  object-fit: cover; /* keeps image/video covering the container nicely */
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+}
+
+/* Overlay text */
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
   color: white;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  font-family: 'Playfair Display', serif;
 }
 
-.App-link {
-  color: #61dafb;
+.overlay-text h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.overlay-text p {
+  font-size: 1.2rem;
+  color: #fff9e6;
+}
+
+/* Optional soft gold overlay */
+.fullscreen-slideshow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(to bottom, rgba(212, 175, 55, 0.15), rgba(0, 0, 0, 0.4)); */
+  z-index: 1;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: center; /* or space-around/space-between */
+  gap: 30px; /* space between links */
+  padding: 20px;
+  background-color: white; /* or transparent */
+}
+
+.navbar a {
+  text-decoration: none;
+  font-family: 'Playfair Display', serif; /* elegant wedding font */
+  font-weight: 600;
+  font-size: 1.2rem; /* larger links */
+  color: #D4AF37; /* gold accent */
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #b8942b; /* slightly darker gold on hover */
+}
+
+.itinerary-page {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;     /* vertically center */
+  min-height: 100vh;       /* full viewport height */
+  background-image: url('/public/images/wedding-design.png'); /* public folder image */
+  
+  background-repeat: no-repeat;
+  background-position: center;      /* centers the image */
+  background-size: contain;         /* ensures the entire image fits, not stretched */
+  
+  position: relative;
+
+}
+
+.itinerary-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.itinerary-container {
+  position: relative;
+  z-index: 2; /* on top of overlay */
+  background-color: rgba(255, 255, 255, 0.9); /* optional: makes text even more readable */
+  padding: 40px 60px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Playfair Display', serif; /* elegant wedding font */
+  font-size: 1.2rem; /* adjust text size */
+  text-align: center;
+  max-width: 500px; /* controls the width */
+  width: 90%;
+}
+
+.faqs-page {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;     /* vertically center */
+  min-height: 100vh;       /* full viewport height */
+  background-image: url('/public/images/wedding-design.png'); /* public folder image */
+  
+  background-repeat: no-repeat;
+  background-position: center;      /* centers the image */
+  background-size: contain;         /* ensures the entire image fits, not stretched */
+  
+  position: relative;
+
+}
+
+.dresscode-page {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;     /* vertically center */
+  min-height: 100vh;       /* full viewport height */
+  background-image: url('/public/images/wedding-design.png'); /* public folder image */
+  
+  background-repeat: no-repeat;
+  background-position: center;      /* centers the image */
+  background-size: contain;         /* ensures the entire image fits, not stretched */
+  
+  position: relative;
+
 }
