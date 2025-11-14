@@ -32,8 +32,8 @@ export const weddingData = {
         formLink: "https://forms.gle/your-google-form",
     },
     slideshow: [
-        { type: "image", src: "/images/couple1.jpg" },
-        { type: "image", src: "/images/couple3.jpg" },
+        { type: "video", src: "/images/oceans-view.mp4" },
+        { type: "image", src: "/images/rings-view.jpg" },
         { type: "video", src: "/images/wedding-video.mp4" } // new video slide
     ],
     itinerary: [
